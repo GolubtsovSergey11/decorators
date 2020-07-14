@@ -7,13 +7,13 @@ def decor_log(puth):
             dict_fun['дата'] = datetime.today()
             dict_fun['аргументы функции'] = [args, kwargs]
             dict_fun['name_fun'] = fun.__name__
-            fun(*args, **kwargs)
+            result = fun(*args, **kwargs)
 
             with open(puth, 'w', encoding='utf-8') as file:
                 for key, value in dict_fun.items():
                     file.write(f'{key}: {value} \n')
 
-            return fun
+            return result
         return wrapper
     return decor
 
